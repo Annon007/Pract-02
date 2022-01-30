@@ -18,7 +18,7 @@ const Login = (props) => {
         enteredPassword.trim().length > 6 && enteredEmail.includes('@')
       );
 
-    }, 1000);
+    }, 500);
     /*
     here we can do also many thing to execute or modify 
     oue code to run as we need on every changes on dependecies
