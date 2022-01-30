@@ -13,7 +13,7 @@ const Login = (props) => {
 
   useEffect(() => {
     const identifier = setTimeout(() => {
-      console.log("Checking form validity")
+      console.log("Checking form validity 🚓🚓🚓🚗")
       setFormIsValid(
         enteredPassword.trim().length > 6 && enteredEmail.includes('@')
       );
@@ -25,10 +25,18 @@ const Login = (props) => {
     */
     return () => {
       clearTimeout(identifier);
-      console.log("Clean Up function")
+      console.log("Clean Up function 🚗🚗🚗🚗")
     }
   }, [enteredPassword, enteredEmail]);
 
+  // useEffect(()=>{
+
+  // console.log("Runs after this component exicutes first time ~ INITIAL 🚓🚓🚓🚗 ")
+  
+  // return ()=>{
+  //   console.log("Effect cleanup wwhich should first after this component first executes also this useEffect's callBack executes! 🚗🚗🚗🚗")
+  // }
+  // },[enteredEmail])
   const emailChangeHandler = (event) => {
     setEnteredEmail(event.target.value);
 
