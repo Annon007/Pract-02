@@ -55,8 +55,6 @@ const LoginReduce = (props) => {
     // setFormIsValid(
     //   passState.isValid && event.target.value.includes("@")
     // );
-
-
   };
 
   const passwordChangeHandler = (event) => {
