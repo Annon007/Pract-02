@@ -33,14 +33,28 @@ const LoginReduce = (props) => {
   // e.g = const [state,dispatchFn]=useReducer(reduceFn,initialState,initialFn)
   const [emailState, dispatchEmail] = useReducer(reduceEmail, { value: "", isValid: null })
   const [passState, dispatchPass] = useReducer(reducePass, { value: "", isValid: null })
-
   const [formIsValid, setFormIsValid] = useState(false);
+
+  const {isValid:emailValidation}=emailState;
+  const {isValid:pasValidation}=passState;
+
+  useEffect(() => {
+    const identifier=setTimeout(()=>{
+      console.log("Confirm Form Validation 🚗🚗🚗🚗")
+      setFormIsValid(emailValidation && pasValidation)
+    },500)
+    return () => {
+      console.log("CleanUp 🕸🕸🕸🕸🕸")
+      clearTimeout(identifier);
+    }
+  },[emailValidation,pasValidation])
+
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_EMAIL", val: event.target.value });
-    setFormIsValid(
-      passState.isValid && event.target.value.includes("@")
-    );
+    // setFormIsValid(
+    //   passState.isValid && event.target.value.includes("@")
+    // );
 
 
   };
@@ -48,9 +62,9 @@ const LoginReduce = (props) => {
   const passwordChangeHandler = (event) => {
     // setEnteredPassword(event.target.value);
     dispatchPass({ type: "USER_PASS", val: event.target.value })
-    setFormIsValid(
-      event.target.value.trim().length > 6 && emailState.isValid
-    );
+    // setFormIsValid(
+    //   event.target.value.trim().length > 6 && emailState.isValid
+    // );
 
 
   };
