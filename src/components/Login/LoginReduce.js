@@ -35,19 +35,19 @@ const LoginReduce = (props) => {
   const [passState, dispatchPass] = useReducer(reducePass, { value: "", isValid: null })
   const [formIsValid, setFormIsValid] = useState(false);
 
-  const {isValid:emailValidation}=emailState;
-  const {isValid:pasValidation}=passState;
+  const { isValid: emailValidation } = emailState;
+  const { isValid: pasValidation } = passState;
 
   useEffect(() => {
-    const identifier=setTimeout(()=>{
+    const identifier = setTimeout(() => {
       console.log("Confirm Form Validation 🚗🚗🚗🚗")
       setFormIsValid(emailValidation && pasValidation)
-    },500)
+    }, 500)
     return () => {
       console.log("CleanUp 🕸🕸🕸🕸🕸")
       clearTimeout(identifier);
     }
-  },[emailValidation,pasValidation])
+  }, [emailValidation, pasValidation])
 
 
   const emailChangeHandler = (event) => {
